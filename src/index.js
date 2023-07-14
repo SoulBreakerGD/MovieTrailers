@@ -7,6 +7,7 @@ import M from 'materialize-css'
 import 'materialize-css/dist/css/materialize.min.css'
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from './components/Theme/ThemeContext';
+import { AuthContextProvider } from './context/AuthContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
@@ -17,7 +18,9 @@ root.render(
   // </React.StrictMode>
   <BrowserRouter>
     <ThemeProvider>
+      <AuthContextProvider>
         <App/>
+      </AuthContextProvider>
     </ThemeProvider>
   </BrowserRouter>
 );

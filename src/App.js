@@ -13,6 +13,8 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Add from './components/Dashboard/Add';
 import Edit from './components/Dashboard/Edit';
 import Delete from './components/Dashboard/Delete';
+import Protected from './components/Protected/Protected';
+import Login from './components/Navigation/Login';
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
         <Route path='/contact' element={<Contact/>}></Route>
         <Route path='/about' element={<About/>}></Route>
         <Route path='/news' element={<News/>}></Route>
+        <Route path='/login' element={<Login/>}></Route>
         <Route path='/dashboard' element={
           <Protected>
             <Dashboard/>
