@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useParams } from "react-router-dom";
@@ -19,17 +19,33 @@ import {
 
 export default function Edit() {
     const [open, setOpen] = useState(false);
-    const film = useParams();
-    const filmID = film.id;
+    const { id } = useParams();
+    const filmID = id;
     const baseURL = `https://64b05cf2c60b8f941af5a00a.mockapi.io/Films/${filmID}`;
+    const [film, setFilm] = useState({});
+    useEffect(() => {
+        fetch(baseURL)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                setFilm(data);
+            })
+            .catch((error) => console.log(error.message));
+    }, [baseURL]);
+    
     const formik = useFormik({
         initialValues: {
-            name: "",
-            img: "",
-            info: "",
-            clip: "",
+            name: `${film.name}`,
+            img: `${film.img}`,
+            info: `${film.info}`,
+            clip: `${film.clip}`,
             // top: false,
         },
+        enableReinitialize: true,
 
         onSubmit: (values) => {
             fetch(baseURL, {
@@ -72,11 +88,12 @@ export default function Edit() {
         <>
         <div style={{height: '10vh'}}></div>
             <form onSubmit={formik.handleSubmit}>
+                <br/>
+                Name:
                 <TextField
                     autoFocus
                     margin="dense"
                     name="name"
-                    label="Name"
                     type="text"
                     fullWidth
                     variant="standard"
@@ -88,10 +105,11 @@ export default function Edit() {
                         {formik.errors.name}
                     </Typography>
                 )}
+                <br/><br/><br/>
+                URL of image:
                 <TextField
                     margin="dense"
                     name="img"
-                    label="URL of image"
                     type="text"
                     fullWidth
                     variant="standard"
@@ -103,11 +121,11 @@ export default function Edit() {
                         {formik.errors.img}
                     </Typography>
                 )}
-
+                <br/><br/><br/>
+                Trailer: 
                 <TextField
                     margin="dense"
                     name="clip"
-                    label="Trailer"
                     type="text"
                     fullWidth
                     variant="standard"
@@ -119,12 +137,13 @@ export default function Edit() {
                         {formik.errors.clip}
                     </Typography>
                 )}
+                <br/><br/><br/>
+                Information:
                 <TextField
                     multiline
                     rows={2}
                     margin="dense"
                     name="info"
-                    label="Information"
                     type="text"
                     fullWidth
                     variant="standard"
@@ -141,10 +160,13 @@ export default function Edit() {
           label="Top Movies"
           name="agree"
         /> */}
-                <br />
-                <Button variant="contained" size="small" type="submit">
-                    Update
-                </Button>
+                <br/><br/>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    <Button variant="contained" type="submit">
+                        Update
+                    </Button>
+                </div>
+                
             </form>
 
             <Dialog

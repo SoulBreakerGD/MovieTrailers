@@ -21,7 +21,10 @@ export default function Login() {
     return (
         <div>
             <div style={{height: '10vh'}}></div>
-            <GoogleButton onClick={handleGoogleSignIn} />
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <GoogleButton onClick={handleGoogleSignIn} />
+            </div>
         </div>
+        
     );
 }

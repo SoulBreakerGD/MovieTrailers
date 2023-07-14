@@ -4,6 +4,7 @@ import { Container, Icon, Breadcrumb, Table } from 'react-materialize'
 
 export default function Dashboard() {
     const [APIData, setAPIData] = useState([]);
+    const [film, setFilm] = useState([]);
     const baseURL = `https://64b05cf2c60b8f941af5a00a.mockapi.io/Films`;
     useEffect(() => {
         fetch(baseURL)
@@ -18,9 +19,10 @@ export default function Dashboard() {
             })
             .catch((error) => console.log(error.message));
     }, []);
-
+    
     return (
         <Container>
+            <div style={{height: '10vh'}}></div>
             <h4 class="red-text" style={{ textAlign: 'center' }}>Dashboard</h4>
             <Table>
                 <thead>
@@ -31,15 +33,15 @@ export default function Dashboard() {
                         <th>Trailer</th>
                     </tr>
                 </thead>
-                {APIData.map((film) => (
+                {APIData.reverse().map((film) => (
                     <tr>
                         <td><img src={film.img} style={{ maxWidth: '100%' }} /></td>
                         <td>{film.name}</td>
                         <td>{film.info}</td>
-                        <td><iframe width="100%" height="150px" src={film.clip} title={film.title} frameborder="0"
+                        <td><iframe width="100%" height="140px" src={film.clip} title={film.title} frameborder="0"
                             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></td>
                         <Link to={`/edit/${film.id}`}>
-                            <p><button class="btn waves-effect waves-dark red darken-4"><Icon>edit</Icon></button></p>
+                            <p><button onClick={() => setFilm(film)} class="btn waves-effect waves-dark red darken-4"><Icon>edit</Icon></button></p>
                         </Link>
 
                         <Link to={`/delete/${film.id}`}>
@@ -48,9 +50,12 @@ export default function Dashboard() {
                     </tr>
                 ))}
             </Table>
-            <Link to={`/add`}>
-                <p><button class="btn waves-effect waves-dark red darken-4">Add Film</button></p>
-            </Link>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <Link to={`/add`}>
+                    <p><button class="btn waves-effect waves-dark red darken-4">Add Film</button></p>
+                </Link>
+            </div>
+            
             <br />
         </Container>
     )
