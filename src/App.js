@@ -7,7 +7,7 @@ import PlayersMap from './components/Player/PlayersMap';
 import Contact from './components/Navigation/Contact';
 import Detail from './components/Detail/Detail';
 import About from './components/Navigation/About';
-import News from './components/Navigation/News';
+import News from './components/Navigation/NewsMap';
 import FilmsMap from './components/Film/FilmsMap';
 import Dashboard from './components/Dashboard/Dashboard';
 import Add from './components/Dashboard/Add';
@@ -27,6 +27,7 @@ function App() {
       <Routes>
         {/* <Route path='/' element={<PlayersMap/>}></Route> */}
         <Route path='/' element={<FilmsMap/>} ></Route>
+        <Route path='/home' element={<FilmsMap/>} ></Route>
         <Route path='/detail/:id' element={<Detail/>}></Route>
         <Route path='/contact' element={<Contact/>}></Route>
         <Route path='/about' element={<About/>}></Route>
