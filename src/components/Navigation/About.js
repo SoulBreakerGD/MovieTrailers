@@ -7,6 +7,7 @@ export default function About() {
   const { theme, toggle, dark } = useContext(ThemeContext)
   return (
     <Container style={{ backgroundColor: theme.backgroundColor, color: theme.color, boxShadow: `0 0 0 1000px ${theme.backgroundColor}` }}>
+      <div style={{height: '10vh'}}></div>
       <div class="about-us-section">
         <h4 class="red-text" style={{ textAlign: 'center' }}>About Us</h4>
         <p>We are a company that specializes in creating innovative products and solutions to make your life easier. Our team is made up of experienced professionals who are passionate about technology and dedicated to providing excellent customer service.</p>

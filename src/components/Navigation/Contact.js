@@ -10,6 +10,7 @@ export default function Contact() {
   const { theme, toggle, dark } = useContext(ThemeContext)
   return (
     <Container style={{ backgroundColor: theme.backgroundColor, color: theme.color, boxShadow: `0 0 0 1000px ${theme.backgroundColor}` }}>
+      <div style={{height: '10vh'}}></div>
       <h4 class="red-text" style={{ textAlign: 'center' }}>Contact Us</h4>
       <form onSubmit={handleSubmit}>
         <TextInput style={{ color: theme.color}} id="TextInput-38" label="Your Name" />

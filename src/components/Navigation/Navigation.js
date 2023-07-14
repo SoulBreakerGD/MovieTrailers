@@ -16,7 +16,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
-const pages = ["home", "about", "news", "contact"];
+const pages = ["about", "news", "contact"];
 function ResponsiveAppBar() {
     const { user, logOut } = UserAuth();
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -41,7 +41,7 @@ function ResponsiveAppBar() {
         setAnchorElUser(null);
     };
     return (
-        <AppBar position="static">
+        <AppBar >
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
@@ -104,6 +104,11 @@ function ResponsiveAppBar() {
                                             {page}
                                         </Typography>
                                     </Link>
+                                    {/* <Link to={`/${page.toLowerCase()}`} style={{ textDecoration: "none" }}>
+                                        <Button sx={{ my: 2, color: "white", display: "block" }}>
+                                            Sign in
+                                        </Button>
+                                    </Link> */}
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -125,7 +130,7 @@ function ResponsiveAppBar() {
                             textDecoration: "none",
                         }}
                     >
-                        LOGO
+                        Movie
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
                         {pages.map((page) => (

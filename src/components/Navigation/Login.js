@@ -20,6 +20,7 @@ export default function Login() {
     }, [user]);
     return (
         <div>
+            <div style={{height: '10vh'}}></div>
             <GoogleButton onClick={handleGoogleSignIn} />
         </div>
     );

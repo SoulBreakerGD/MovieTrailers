@@ -8,6 +8,7 @@ export default function News() {
   const { theme, toggle, dark } = useContext(ThemeContext)
   return (
     <Container style={{ backgroundColor: theme.backgroundColor, color: theme.color, boxShadow: `0 0 0 1000px ${theme.backgroundColor}` }}>
+      <div style={{height: '10vh'}}></div>
       <h4 class="red-text" style={{ textAlign: 'center' }}>Breaking News</h4>
       <Row>
         {NewsList.map((news) => (

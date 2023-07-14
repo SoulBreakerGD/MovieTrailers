@@ -25,7 +25,7 @@ export default function FilmsMap() {
     const { theme, toggle, dark } = useContext(ThemeContext)
     return (
         <Container style={{ backgroundColor: theme.backgroundColor, color: theme.color, boxShadow: `0 0 0 1000px ${theme.backgroundColor}` }}>
-            <br/>
+            <div style={{height: '10vh'}}></div>
             <Row style={{ textAlign: 'center' }}>
                 {APIData.map((film) => (
                     <Col key={film.id} s={6} m={4} l={3}>

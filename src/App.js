@@ -27,7 +27,6 @@ function App() {
       <Routes>
         {/* <Route path='/' element={<PlayersMap/>}></Route> */}
         <Route path='/' element={<FilmsMap/>} ></Route>
-        <Route path='/home' element={<FilmsMap/>} ></Route>
         <Route path='/detail/:id' element={<Detail/>}></Route>
         <Route path='/contact' element={<Contact/>}></Route>
         <Route path='/about' element={<About/>}></Route>

@@ -56,15 +56,19 @@ export default function Delete() {
     //   </div>
     // </Container>
     <>
+    <div style={{height: '10vh'}}></div>
       <br/>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Typography variant="h6">
           Are you sure you want to delete this film?
         </Typography>
+      </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <Button variant="contained" color="error" onClick={handleDelete}>
           Delete
         </Button>
       </div>
+        
       <Dialog
         open={open}
         onClose={handleClose}
